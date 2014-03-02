@@ -191,7 +191,10 @@ module.exports = function(grunt) {
             build: {
                 options: {
                     stylesheets: ['../<%= yeoman.tmp %>/concat/styles/main.min.css'],
-                    ignore: ['.preloader', /\.fixed ?.*/, /.*\.top-bar.*\.expanded.*/, /.*orbit.*/]
+                    ignore: ['.preloader', /.*\.js-generated.*/,
+                             /\.fixed ?.*/, /.*\.top-bar.*\.expanded.*/,
+                             /.*dropdown.*/,
+                             /.*orbit.*/]
                 },
                 src: ['<%= yeoman.app %>/index.html'],
                 dest: '<%= yeoman.tmp %>/concat/styles/main.min.css'
