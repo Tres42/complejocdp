@@ -1,0 +1,10 @@
+#slider {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: $topbar-height;
+}
+
+#wrapper {
+    @include transition(padding-top .5s ease-out);
+}

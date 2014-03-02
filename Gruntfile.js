@@ -90,7 +90,8 @@ module.exports = function(grunt) {
                     '<%= yeoman.app %>/styles/',
                     '<%= yeoman.app %>/bower_components/',
                     '<%= yeoman.app %>/bower_components/foundation/scss',
-                    '<%= yeoman.app %>/bower_components/font-awesome/scss' 
+                    '<%= yeoman.app %>/bower_components/font-awesome/scss',
+                    '<%= yeoman.app %>/bower_components/bourbon/app/assets/stylesheets'
                 ],
             },
             build: {
@@ -189,7 +190,8 @@ module.exports = function(grunt) {
         uncss: {
             build: {
                 options: {
-                    stylesheets: ['../<%= yeoman.tmp %>/concat/styles/main.min.css']
+                    stylesheets: ['../<%= yeoman.tmp %>/concat/styles/main.min.css'],
+                    ignore: ['.preloader', /\.fixed ?.*/, /.*orbit.*/]
                 },
                 src: ['<%= yeoman.app %>/index.html'],
                 dest: '<%= yeoman.tmp %>/concat/styles/main.min.css'
@@ -226,7 +228,7 @@ module.exports = function(grunt) {
                     src: [
                         '*.{ico,txt}',
                         '.htaccess',
-                        'images/{,*/}*.webp',
+                        'images/{,*/}*.{webp,svg}',
                         'styles/fonts/*'
                     ]
                 }, {

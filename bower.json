@@ -5,7 +5,8 @@
     "foundation": "~5.1.1",
     "font-awesome": "~4.0.3",
     "jquery": "~2.1.0",
-    "modernizr": "~2.7.1"
+    "modernizr": "~2.7.1",
+    "bourbon": "~3.1.8",
+    "jquery.transit": "~0.9.9"
   }
 }
-

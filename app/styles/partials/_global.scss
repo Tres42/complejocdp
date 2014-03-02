@@ -1,0 +1,40 @@
+body {
+    background-size: 100px;
+}
+
+.dark-bg {
+    background: $body-bg;
+    background-size: 100px;
+}
+
+.light-bg {
+    background: $body-alt-bg;
+}
+
+.dark-font {
+    color: $body-alt-font-color;
+}
+
+.light-font {
+    color: $body-font-color;
+}
+
+.shadow {
+    box-shadow: 0 -.2rem 1rem -.4rem rgba(0, 0, 0, .6),
+                inset 0 -1px 5px rgba(0, 0, 0, .4);
+}
+
+.alt-bg {
+    @extend .dark-font;
+    @extend .light-bg;
+}
+
+#inner {
+    position: relative;
+    box-shadow: 0 -.3rem 1.6rem 0 rgba(0, 0, 0, .6);
+    z-index: 10;
+
+    section {
+        padding: 10px inherit;
+    }
+}
