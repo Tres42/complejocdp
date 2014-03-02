@@ -7,7 +7,9 @@
     }
 
     .fixed {
-        opacity: .85;
+        @media #{$medium-up} {
+            opacity: .85;
+        }
     }
 }
 
@@ -17,7 +19,7 @@
     }
 
     .title-area  {
-        margin-left: 10px;
+        padding-left: 10px;
 
         .logo {
             position: relative;

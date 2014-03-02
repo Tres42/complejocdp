@@ -19,6 +19,10 @@ $(function() {
     // Foundation JavaScript
     // Documentation can be found at: http://foundation.zurb.com/docs
     $(document).foundation({
+        topbar: {
+            back_text: 'Volver',
+            scrolltop: false
+        },
         orbit: {
             timer_speed: 3500,
             pause_on_hover: false,
