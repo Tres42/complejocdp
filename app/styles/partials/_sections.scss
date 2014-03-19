@@ -1,0 +1,17 @@
+.bg-a {
+    background-size: cover;
+    background-position: top right;
+    @include background-image(url("../images/bg-a.jpg"));
+}
+
+.bg-b {
+    background-size: cover;
+    background-position: top right;
+    @include background-image(url("../images/bg-b.jpg"));
+}
+
+.bg-c {
+    background-size: cover;
+    background-position: top right;
+    @include background-image(url("../images/bg-c.jpg"));
+}

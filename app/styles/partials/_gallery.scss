@@ -1,7 +1,4 @@
-#main-gallery {
-    background-size: cover;
-    @include background-image(url("../images/gallery-bg.jpg"));
-
+#gallery {
     .thumbs {
         .row {
             padding-bottom: 17px;

@@ -1,7 +1,12 @@
 /* Colors */
-$black: rgb(38, 38, 38);
+$black: rgba(38, 38, 38, 1);
 $white: rgb(234, 234, 234);
-$dsgreyish: rgb(55, 62, 62);
 $greyish: rgb(159, 164, 163);
-$goldish: rgb(230,137,19);
-$redish: rgb(141, 77, 59);
+
+$shadow: transparentize($black, .2);
+
+$orange: #EA7107;
+$blue: #277EE7;
+$pink: #D30465;
+$yellow: #E6D513;
+$green: #26F642;
