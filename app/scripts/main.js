@@ -31,6 +31,7 @@ $(function() {
             1440: 'large'
         },
         onImagesReplaced: function () {
+            changeSliderHeight();
             // Foundation JavaScript
             // Documentation can be found at: http://foundation.zurb.com/docs
             $(document).foundation({
