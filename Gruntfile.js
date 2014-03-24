@@ -1,14 +1,14 @@
 // Generated on 2014-02-24 using generator-bedrock 0.1.0
+// [SublimeLinter jshint-curly:false]
 'use strict';
 
 module.exports = function(grunt) {
     require('time-grunt')(grunt);
-
     require('load-grunt-tasks')(grunt);
 
     var yeomanConfig = {
         app: 'app',
-        build: 'dist',
+        dist: 'dist',
         tmp: '.tmp'
     };
 
@@ -47,9 +47,9 @@ module.exports = function(grunt) {
                     debug: true
                 }
             },
-            build: {
+            dist: {
                 options: {
-                    base: '<%= yeoman.build %>',
+                    base: '<%= yeoman.dist %>',
                     keepalive: true,
                     livereload: false
                 }
@@ -61,13 +61,13 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            build: {
+            dist: {
                 files: [{
                     dot: true,
                     src: [
                         '<%= yeoman.tmp %>',
-                        '<%= yeoman.build %>/*',
-                        '!<%= yeoman.build %>/.git*'
+                        '<%= yeoman.dist %>/*',
+                        '!<%= yeoman.dist %>/.git*'
                     ]
                 }]
             },
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
                     '<%= yeoman.app %>/bower_components/bourbon/app/assets/stylesheets'
                 ],
             },
-            build: {
+            dist: {
                 files: {
                     '<%= yeoman.tmp %>/styles/main.css': '<%= yeoman.app %>/styles/main.scss'
                 }
@@ -109,86 +109,121 @@ module.exports = function(grunt) {
                 }
             }
         },
+        responsive_images: {
+            options: {
+                sizes: [{
+                    name: 'small',
+                    width: 320
+                },{
+                    name: 'medium',
+                    width: 640
+                }, {
+                    name: 'large',
+                    width: 1440
+                }]
+            },
+            server: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/images/slides',
+                    src: '{,*/}*.{png,jpg,jpeg}',
+                    dest: '<%= yeoman.tmp %>/images/slides'
+                }]
+            }
+        },
         filerev: {
-            build: {
+            dist: {
                 src: [
-                    '<%= yeoman.build %>/scripts/{,*/}*.js',
-                    '<%= yeoman.build %>/styles/{,*/}*.css',
-                    '<%= yeoman.build %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
-                    '<%= yeoman.build %>/styles/fonts/*'
+                    '<%= yeoman.dist %>/scripts/{,*/}*.js',
+                    '<%= yeoman.dist %>/styles/{,*/}*.css',
+                    '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+                    '<%= yeoman.dist %>/styles/fonts/*'
                 ]
             }
         },
         modernizr: {
-            "devFile": "<%= yeoman.app %>/bower_components/modernizr/modernizr.js",
-            "outputFile": "<%= yeoman.build %>/scripts/modernizr.js",
-            "extra": {
-                "shiv": true,
-                "printshiv": false,
-                "load": true,
-                "mq": false,
-                "cssclasses": true
+            'devFile': '<%= yeoman.app %>/bower_components/modernizr/modernizr.js',
+            'outputFile': '<%= yeoman.dist %>/scripts/modernizr.js',
+            'extra': {
+                'shiv': true,
+                'printshiv': false,
+                'load': true,
+                'mq': false,
+                'cssclasses': true
             },
-            "extensibility": {
-                "addtest": false,
-                "prefixed": false,
-                "teststyles": false,
-                "testprops": false,
-                "testallprops": false,
-                "hasevents": false,
-                "prefixes": false,
-                "domprefixes": false
+            'extensibility': {
+                'addtest': false,
+                'prefixed': false,
+                'teststyles': false,
+                'testprops': false,
+                'testallprops': false,
+                'hasevents': false,
+                'prefixes': false,
+                'domprefixes': false
             },
-            "uglify": true,
-            "tests": [],
-            "parseFiles": true,
+            'uglify': true,
+            'tests': [],
+            'parseFiles': true,
             // When parseFiles = true, this task will crawl all *.js, *.css, *.scss files, except files that are in node_modules/.
-            // You can override this by defining a "files" array below.
-            // "files" : [],
-            "matchCommunityTests": false,
-            "customTests": []
+            // You can override this by defining a 'files' array below.
+            // 'files' : [],
+            'matchCommunityTests': false,
+            'customTests': []
         },
         useminPrepare: {
             options: {
-                dest: '<%= yeoman.build %>'
+                dest: '<%= yeoman.dist %>'
             },
             html: '<%= yeoman.app %>/index.html'
         },
         usemin: {
             options: {
                 assetsDirs: [
-                    '<%= yeoman.build %>',
-                    '<%= yeoman.build %>/styles'
+                    '<%= yeoman.dist %>',
+                    '<%= yeoman.dist %>/styles'
                 ]
             },
-            html: ['<%= yeoman.build %>/{,*/}*.html'],
-            css: ['<%= yeoman.build %>/styles/{,*/}*.css']
+            html: ['<%= yeoman.dist %>/{,*/}*.html'],
+            css: ['<%= yeoman.dist %>/styles/{,*/}*.css']
         },
         imagemin: {
-            build: {
-                options: {
-                    cache: false
-                },
+            options: {
+                cache: false
+            },
+            dist: {
                 files: [{
                     expand: true,
                     cwd: '<%= yeoman.app %>/images',
                     src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: '<%= yeoman.build %>/images'
+                    dest: '<%= yeoman.dist %>/images'
+                },{
+                    expand: true,
+                    cwd: '<%= yeoman.tmp %>/images',
+                    src: '{,*/}*.{png,jpg,jpeg}',
+                    dest: '<%= yeoman.dist %>/images'
+                }]
+            },
+            slides: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= yeoman.tmp %>/images/slides',
+                    src: '{,*/}*.{png,jpg,jpeg}',
+                    dest: '<%= yeoman.dist %>/images/slides'
                 }]
             }
         },
         htmlmin: {
-            build: {
+            dist: {
                 files: [{
                     expand: true,
                     cwd: '<%= yeoman.app %>',
                     src: '*.html',
-                    dest: '<%= yeoman.build %>'
+                    dest: '<%= yeoman.dist %>'
                 }]
             }
         },
         uncss: {
-            build: {
+            dist: {
                 options: {
                     stylesheets: ['../<%= yeoman.tmp %>/concat/styles/main.min.css'],
                     ignore: ['.preloader', /.*\.js-generated.*/,
@@ -222,12 +257,12 @@ module.exports = function(grunt) {
                     filter: 'isFile'
                 }]
             },
-            build: {
+            dist: {
                 files: [{
                     expand: true,
                     dot: true,
                     cwd: '<%= yeoman.app %>',
-                    dest: '<%= yeoman.build %>',
+                    dest: '<%= yeoman.dist %>',
                     src: [
                         '*.{ico,txt}',
                         '.htaccess',
@@ -236,22 +271,22 @@ module.exports = function(grunt) {
                     ]
                 }, {
                     expand: true,
-                    cwd: '.tmp/images',
-                    dest: '<%= yeoman.build %>/images',
+                    cwd: '<%= yeoman.tmp %>/images',
+                    dest: '<%= yeoman.dist %>/images',
                     src: ['generated/*']
                 }, {
                     expand: true,
                     flatten: true,
                     src: ['<%= yeoman.app %>/bower_components/font-awesome/fonts/**'],
-                    dest: '<%= yeoman.build %>/styles/fonts/',
+                    dest: '<%= yeoman.dist %>/styles/fonts/',
                     filter: 'isFile'
                 }]
             }
         },
         concurrent: {
-            build: [
-                'sass:build',
-                'imagemin',
+            dist: [
+                'sass:dist',
+                'imagemin:dist',
                 'htmlmin'
             ]
         },
@@ -269,24 +304,26 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
         'jshint',
         'test',
-        'build'
+        'dist'
     ]);
 
-    grunt.registerTask('build', [
-        'clean:build',
+    grunt.registerTask('dist', [
+        'clean:dist',
+        'responsive_images',
         'useminPrepare',
-        'concurrent:build',
+        'concurrent:dist',
         'concat',
         'uncss',
         'cssmin',
         'uglify',
-        'copy:build',
+        'copy:dist',
         'filerev',
-        'usemin'
+        'usemin',
+        'imagemin:slides'
     ]);
 
-    grunt.registerTask('publish', function (target) {
-        grunt.task.run('build');
+    grunt.registerTask('publish', function () {
+        grunt.task.run('dist');
 
         try {
             grunt.task.run('gh-pages');
@@ -301,25 +338,18 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('serve', function(target) {
-        if (target === 'build' || target === 'dist') {
-            if (target === 'dist')
-                grunt.log.warn('You should use `serve:build` task.');
-            return grunt.task.run(['build', 'open', 'connect:build']);
+        if (target === 'dist') {
+            return grunt.task.run(['dist', 'open', 'connect:dist']);
         }
 
         grunt.task.run([
             'clean:server',
             'sass:server',
+            'responsive_images',
             'copy:server',
             'connect:server',
             'open:server',
             'watch'
         ]);
     });
-
-    // grunt.registerTask('test', [
-    //     'clean:server',
-    //     'sass:server',
-    //     'connect:test'
-    // ]);
-}
+};

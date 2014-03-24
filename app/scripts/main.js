@@ -1,14 +1,52 @@
+'use strict';
+
 $(function() {
-    'use strict';
-    var $wrapper = $("#wrapper"),
-        $slider = $('#slider');
+    var $wrapper = $('#wrapper'),
+        $slider = $('#slider'),
+        $topBar = $('#header .sticky'),
+        sliderHeight;
 
-    function sliderHeight() {
-        $wrapper.css('padding-top', $slider.height());
-    }
+    var changeSliderHeight = function () {
+        sliderHeight = $slider.height();
+        $wrapper.css('padding-top', sliderHeight);
+    };
 
-    console.log('Loaded');
+    var changeTopBarSize = function (e) {
+        var scrollPos = $(e.target).scrollTop(),
+            $sliderContainer = $('.orbit-container', $slider);
 
+        if (scrollPos >= sliderHeight && !$topBar.hasClass('mini')) {
+            $topBar.addClass('mini');
+            $sliderContainer.click();
+        } else if (scrollPos < sliderHeight && $topBar.hasClass('mini')) {
+            $topBar.removeClass('mini');
+            $sliderContainer.click();
+        }
+    };
+
+    new Imager({
+        availableWidths: {
+            320: 'small',
+            640: 'medium',
+            1440: 'large'
+        },
+        onImagesReplaced: function () {
+            // Foundation JavaScript
+            // Documentation can be found at: http://foundation.zurb.com/docs
+            $(document).foundation({
+                topbar: {
+                    back_text: 'Volver',
+                    scrolltop: false
+                },
+                orbit: {
+                    timer_speed: 3500,
+                    pause_on_hover: false,
+                    animation_speed: 750,
+                    slide_number: false
+                }
+            });
+        }
+    });
 
     if (Modernizr.csstransitions) {
         console.log('Using jquery.transit');
@@ -16,22 +54,6 @@ $(function() {
         $.cssEase._default = 'out';
     }
 
-    // Foundation JavaScript
-    // Documentation can be found at: http://foundation.zurb.com/docs
-    $(document).foundation({
-        topbar: {
-            back_text: 'Volver',
-            scrolltop: false
-        },
-        orbit: {
-            timer_speed: 3500,
-            pause_on_hover: false,
-            animation_speed: 750,
-            slide_number: false
-        }
-    });
-
-    sliderHeight();
-    $slider.on('ready.fndtn.orbit', sliderHeight);
-    $(window).on('resize', sliderHeight);
+    $slider.on('ready.fndtn.orbit', changeSliderHeight);
+    $(window).on('resize', changeSliderHeight).on('scroll', changeTopBarSize);
 });

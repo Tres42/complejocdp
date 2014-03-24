@@ -62,32 +62,34 @@
     <div id="wrapper">
       <section id="slider">
         <ul data-orbit>
-          <li><img src="images/slides/superdomo.jpg" alt="Superdomo" width="1440" height="660"></li>
-          <li><img src="images/slides/glamers.jpg" alt="Glamers" width="1440" height="660"></li>
+          <li><div class="delayed-image-load" data-src="images/slides/superdomo-{width}.jpg" data-alt="Superdomo" data-width="1440"></div></li>
+          <li><div class="delayed-image-load" data-src="images/slides/glamers-{width}.jpg" data-alt="Glamers" data-width="1440"></div></li>
         </ul>
       </section>
       <div id="content">
-        <section class="bg-a dark-font">
+        <section class="bg-a shadow">
           <div class="row">
             <div class="columns medium-12">
               <header>
                 <h3><span class="invert blue"><strong>Prueba</strong></span></h3>
                 <h1><span class="invert blue">Esto es una prueba</span></h1>
               </header>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, deserunt, vero rerum modi vitae repudiandae nesciunt maiores quos voluptatum ex velit perspiciatis iusto eius provident facilis sint atque delectus laboriosam reprehenderit aspernatur numquam odit ipsum!</p>
-              <p>Libero, facilis, nulla, dolorum quam ex nisi dolorem debitis commodi accusantium deleniti odio amet maxime officia atque expedita hic voluptatem harum sed aperiam voluptatum ea exercitationem ut voluptas laborum dolore tenetur enim facere temporibus aspernatur?</p>
-              <p>Ut, veritatis libero iste soluta quisquam beatae eum. Eos, laudantium, cumque ab minus natus adipisci dolores aperiam id illum molestias corporis totam beatae odio maxime quos iste quia vero. Veritatis dolorem qui quo harum non.</p>
-              <p>Odit, porro necessitatibus? Eius, velit, enim, nam culpa quidem ipsa natus cumque excepturi consequuntur voluptas suscipit dolores nostrum molestias animi repudiandae. Neque, officiis, enim in error distinctio quo ipsa unde aut quam rem debitis dolore?</p>
-              <p><a href="#">Lorem ipsum dolor.</a></p>
+              <div class="white-alpha">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, deserunt, vero rerum modi vitae repudiandae nesciunt maiores quos voluptatum ex velit perspiciatis iusto eius provident facilis sint atque delectus laboriosam reprehenderit aspernatur numquam odit ipsum!</p>
+                <p>Libero, facilis, nulla, dolorum quam ex nisi dolorem debitis commodi accusantium deleniti odio amet maxime officia atque expedita hic voluptatem harum sed aperiam voluptatum ea exercitationem ut voluptas laborum dolore tenetur enim facere temporibus aspernatur?</p>
+                <p>Ut, veritatis libero iste soluta quisquam beatae eum. Eos, laudantium, cumque ab minus natus adipisci dolores aperiam id illum molestias corporis totam beatae odio maxime quos iste quia vero. Veritatis dolorem qui quo harum non.</p>
+                <p>Odit, porro necessitatibus? Eius, velit, enim, nam culpa quidem ipsa natus cumque excepturi consequuntur voluptas suscipit dolores nostrum molestias animi repudiandae. Neque, officiis, enim in error distinctio quo ipsa unde aut quam rem debitis dolore?</p>
+                <p><a href="#">Lorem ipsum dolor.</a></p>
+              </div>
             </div>
           </div>
         </section>
-        <section id="gallery" class="bg-b">
+        <section id="gallery" class="bg-b shadow">
           <div class="row">
             <div class="columns">
               <header>
-                <h3><span class="invert"><strong><time datetime="2014-03-29">29-Mar</time></strong></span></h3>
-                <h1><span class="invert">Título de la fiesta</span></h1>
+                <h3><span class="invert pink"><strong><time datetime="2014-03-29">29-Mar</time></strong></span></h3>
+                <h1><span class="invert pink">Título de la fiesta</span></h1>
               </header>
             </div>
             <div class="columns small-12">
@@ -116,16 +118,18 @@
             </div>
           </div>
         </section>
-        <section>
+        <section class="bg-c shadow">
           <div class="row">
             <div class="medium-12 columns">
               <header>
-                <h3><span class="invert pink"><strong>Prueba</strong></span></h3>
-                <h1><span class="invert pink">Esto es una prueba</span></h1>
+                <h3><span class="invert orange"><strong>Prueba</strong></span></h3>
+                <h1><span class="invert orange">Esto es una prueba</span></h1>
               </header>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, vero optio cumque explicabo maxime cum enim sint ab tenetur odio minima asperiores mollitia rerum quod!</p>
-              <p>Ipsam, odio, quam, ducimus, debitis incidunt hic nostrum beatae quia repudiandae provident minus aut magni ipsum quas modi quo nisi obcaecati ad rem asperiores ullam?</p>
-              <p>Perspiciatis, illum, eos minima perferendis consequatur in repellat dicta non error quibusdam dolorem ex autem nemo labore a provident rem. Debitis, error eaque omnis commodi!</p>
+              <div class="white-alpha">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, vero optio cumque explicabo maxime cum enim sint ab tenetur odio minima asperiores mollitia rerum quod!</p>
+                <p>Ipsam, odio, quam, ducimus, debitis incidunt hic nostrum beatae quia repudiandae provident minus aut magni ipsum quas modi quo nisi obcaecati ad rem asperiores ullam?</p>
+                <p>Perspiciatis, illum, eos minima perferendis consequatur in repellat dicta non error quibusdam dolorem ex autem nemo labore a provident rem. Debitis, error eaque omnis commodi!</p>
+              </div>
             </div>
           </div>
         </section>
@@ -140,6 +144,7 @@
     <!-- build:js scripts/vendor/scripts.min.js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/jquery.transit/jquery.transit.js"></script>
+    <script src="bower_components/imager.js/Imager.js"></script>
     <script src="bower_components/foundation/js/foundation.js"></script>
     <!-- endbuild -->
     <!-- build:js scripts/main.min.js -->

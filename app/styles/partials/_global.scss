@@ -43,7 +43,7 @@ body {
             margin-bottom: 20px;
             position: relative;
             z-index: 50;
-            @include transform(rotate(-1deg));
+            @include transform(rotate(-3deg));
         }
 
         h3 {
@@ -74,3 +74,9 @@ body {
     }
 }
 
+.white-alpha {
+    background-color: rgba($white, 0.7);
+    padding: 20px;
+
+    @extend .dark-font;
+}
