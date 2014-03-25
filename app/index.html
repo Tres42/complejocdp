@@ -61,9 +61,9 @@
     </header>
     <div id="wrapper">
       <section id="slider">
-        <ul data-orbit>
-          <li><div class="delayed-image-load" data-src="images/slides/superdomo-{width}.jpg" data-alt="Superdomo" data-width="1440"></div></li>
-          <li><div class="delayed-image-load" data-src="images/slides/glamers-{width}.jpg" data-alt="Glamers" data-width="1440"></div></li>
+        <ul class="slides" data-orbit>
+          <li><div class="delayed-image-load" data-src="images/slides/superdomo-{width}.jpg" data-alt="Superdomo" data-width="2000"></div></li>
+          <li><div class="delayed-image-load" data-src="images/slides/glamers-{width}.jpg" data-alt="Glamers" data-width="2000"></div></li>
         </ul>
       </section>
       <div id="content">
@@ -142,10 +142,14 @@
       </div>
     </div>
     <!-- build:js scripts/vendor/scripts.min.js -->
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/jquery.transit/jquery.transit.js"></script>
     <script src="bower_components/imager.js/Imager.js"></script>
-    <script src="bower_components/foundation/js/foundation.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.dropdown.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.topbar.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.orbit.js"></script>
     <!-- endbuild -->
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>

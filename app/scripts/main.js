@@ -1,19 +1,19 @@
 'use strict';
 
-$(function() {
+(function ($, document, window){
     var $wrapper = $('#wrapper'),
         $slider = $('#slider'),
         $topBar = $('#header .sticky'),
+        $sliderContainer,
         sliderHeight;
 
-    var changeSliderHeight = function () {
+    var calcSliderHeight = function () {
         sliderHeight = $slider.height();
         $wrapper.css('padding-top', sliderHeight);
     };
 
     var changeTopBarSize = function (e) {
-        var scrollPos = $(e.target).scrollTop(),
-            $sliderContainer = $('.orbit-container', $slider);
+        var scrollPos = $(e.target).scrollTop();
 
         if (scrollPos >= sliderHeight && !$topBar.hasClass('mini')) {
             $topBar.addClass('mini');
@@ -24,6 +24,12 @@ $(function() {
         }
     };
 
+    if (Modernizr.csstransitions) {
+        console.log('Using jquery.transit');
+        $.fn.animate = $.fn.transition;
+        $.cssEase._default = 'out';
+    }
+
     new Imager({
         availableWidths: {
             320: 'small',
@@ -31,9 +37,6 @@ $(function() {
             1440: 'large'
         },
         onImagesReplaced: function () {
-            changeSliderHeight();
-            // Foundation JavaScript
-            // Documentation can be found at: http://foundation.zurb.com/docs
             $(document).foundation({
                 topbar: {
                     back_text: 'Volver',
@@ -49,12 +52,12 @@ $(function() {
         }
     });
 
-    if (Modernizr.csstransitions) {
-        console.log('Using jquery.transit');
-        $.fn.animate = $.fn.transition;
-        $.cssEase._default = 'out';
-    }
+    $slider.on('ready.fndtn.orbit', function () {
+        if (!$sliderContainer) {
+            $sliderContainer = $('.orbit-container', $slider);
+        }
+    });
 
-    $slider.on('ready.fndtn.orbit', changeSliderHeight);
-    $(window).on('resize', changeSliderHeight).on('scroll', changeTopBarSize);
-});
+    $slider.on('ready.fndtn.orbit', calcSliderHeight);
+    $(window).on('resize', calcSliderHeight).on('scroll', changeTopBarSize);
+})(jQuery, document, window);
